@@ -5,7 +5,7 @@ Bifrost is a Valheim mod that simplifies multiplayer access by saving server pas
 ## Configuration
 
 No manual setup is required initially. When you first run the mod, it automatically creates a configuration file at:
-`BepInEx/config/throwingbits.valheim.Bifrost.json`
+`BepInEx/config/legendaryb.valheim.Bifrost.json`
 
 ### Example Configuration
 ```json
