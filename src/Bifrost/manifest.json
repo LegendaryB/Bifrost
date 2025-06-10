@@ -1,0 +1,8 @@
+{
+  "name": "Bifrost",
+  "author": "throwingbits",
+  "description": "Allows saving server passwords and injecting them automatically while connecting.",
+  "version_number": "1.0.0",
+  "dependencies": [],
+  "website_url": ""
+}
