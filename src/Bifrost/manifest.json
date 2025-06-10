@@ -1,8 +1,10 @@
 {
   "name": "Bifrost",
-  "author": "throwingbits",
-  "description": "Allows saving server passwords and injecting them automatically while connecting.",
+  "author": "LegendaryB",
+  "description": "Bifrost is a Valheim mod that allows players to save server passwords and automatically inject them while connecting to the server.",
   "version_number": "1.0.0",
-  "dependencies": [],
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2202"
+  ],
   "website_url": ""
 }
