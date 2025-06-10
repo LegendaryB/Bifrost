@@ -18,7 +18,7 @@ namespace Bifrost
                 if (!needPassword)
                     return;
 
-                if (!Configuraton.Items.TryGetValue(SelectedServerUniqueKey, out var item))
+                if (!Configuraton.Servers.TryGetValue(SelectedServerUniqueKey, out var item))
                 {
                     var inputField = __instance.m_passwordDialog.GetComponentInChildren<GuiInputField>();
 
@@ -30,7 +30,7 @@ namespace Bifrost
                     {
                         if (!string.IsNullOrWhiteSpace(password))
                         {
-                            Configuraton.Items.Add(SelectedServerUniqueKey, password);
+                            Configuraton.Servers.Add(SelectedServerUniqueKey, password);
 
                             Logger.LogInfo($"Saved password for {SelectedServerUniqueKey}");
 

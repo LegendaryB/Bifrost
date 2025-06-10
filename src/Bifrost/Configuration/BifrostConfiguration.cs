@@ -4,7 +4,6 @@ namespace Bifrost.Configuration
 {
     internal class BifrostConfiguration
     {
-        public bool AutoSave { get; set; }
-        public Dictionary<string, string> Items { get; set; } = new Dictionary<string, string>();
+        public Dictionary<string, string> Servers { get; set; } = new Dictionary<string, string>();
     }
 }

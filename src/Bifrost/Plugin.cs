@@ -16,7 +16,7 @@ namespace Bifrost
     public partial class BifrostPlugin : BaseUnityPlugin
     {
         private const string PluginName = "Bifrost";
-        private const string PluginIdentifier = "throwingbits.valheim.Bifrost";
+        private const string PluginIdentifier = "legendaryb.valheim.Bifrost";
 
         public static ManualLogSource Logger = null;
 

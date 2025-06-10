@@ -14,7 +14,7 @@ namespace Bifrost
                 if (!string.IsNullOrWhiteSpace(PendingPassword) &&
                     !string.IsNullOrWhiteSpace(SelectedServerUniqueKey))
                 {
-                    Configuraton.Items[SelectedServerUniqueKey] = PendingPassword;
+                    Configuraton.Servers[SelectedServerUniqueKey] = PendingPassword;
                     Logger.LogInfo($"[Bifrost] Saved password for {SelectedServerUniqueKey}");
 
                     SelectedServerUniqueKey = null;
