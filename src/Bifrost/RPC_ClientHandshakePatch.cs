@@ -17,7 +17,7 @@ namespace Bifrost
             {
                 if (!needPassword)
                 {
-                    Logger.LogDebug("Server does not need a password. Connecting..");
+                    Logger.LogInfo("Server does not need a password. Connecting..");
                     return;
                 }
 
@@ -25,7 +25,7 @@ namespace Bifrost
                     SelectedServerUniqueKey,
                     out var savedPassword))
                 {
-                    Logger.LogDebug($"No saved password for server found (serverKey = {SelectedServerUniqueKey}).");
+                    Logger.LogInfo($"No saved password for server found (serverKey = {SelectedServerUniqueKey}).");
 
                     var inputField = __instance.m_passwordDialog.GetComponentInChildren<GuiInputField>();
 
@@ -49,7 +49,7 @@ namespace Bifrost
                 }
                 else
                 {
-                    Logger.LogError($"Found saved password for server (serverKey = {SelectedServerUniqueKey})");
+                    Logger.LogInfo($"Found saved password for server (serverKey = {SelectedServerUniqueKey})");
 
                     __instance.m_passwordDialog.gameObject.SetActive(false);
 

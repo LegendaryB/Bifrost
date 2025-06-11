@@ -14,7 +14,9 @@ namespace Bifrost
                 SelectedServerUniqueKey = null;
                 PendingPassword = null;
 
-                if (!TryGetServerStatus(__instance, out var serverStatus))
+                if (!TryGetServerStatus(
+                    __instance,
+                    out var serverStatus))
                 {
                     Logger.LogError("Failed to get server status object.");
                     return;
@@ -22,7 +24,8 @@ namespace Bifrost
 
                 Logger.LogDebug("Got server status object.");
 
-                SelectedServerUniqueKey = GenerateServerUniqueKey(serverStatus.m_joinData);
+                SelectedServerUniqueKey = GenerateServerUniqueKey(
+                    serverStatus.m_joinData);
 
                 if (string.IsNullOrWhiteSpace(SelectedServerUniqueKey))
                     Logger.LogError("Failed to get server key.");

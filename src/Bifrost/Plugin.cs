@@ -18,8 +18,7 @@ namespace Bifrost
         private const string PluginName = "Bifrost";
         private const string PluginIdentifier = "legendaryb.valheim.Bifrost";
 
-        public static ManualLogSource Logger = null;
-
+        private static new ManualLogSource Logger { get; set; }
         private static BifrostConfiguration Configuraton { get; set; }
         private static string SelectedServerUniqueKey { get; set; }
         private static string PendingPassword { get; set; }
@@ -44,15 +43,15 @@ namespace Bifrost
                     return null;
                 }
 
-                Logger.LogDebug("Configuration file found.");
+                Logger.LogDebug("Configuration file was found.");
 
                 var content = File.ReadAllText(configurationPath);
 
-                Logger.LogDebug("Configuration file read.");
+                Logger.LogDebug("Configuration file was read.");
 
                 var configuration = JsonConvert.DeserializeObject<BifrostConfiguration>(content);
 
-                Logger.LogDebug("Configuration file loaded.");
+                Logger.LogInfo("Configuration file was loaded.");
 
                 return configuration;
             }
@@ -74,7 +73,7 @@ namespace Bifrost
                     configurationPath,
                     content);
 
-                Logger.LogDebug("Saved configuration file.");
+                Logger.LogInfo("Saved configuration file.");
             }
             catch (Exception)
             {
