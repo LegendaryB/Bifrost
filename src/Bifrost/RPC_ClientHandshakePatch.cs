@@ -16,10 +16,17 @@ namespace Bifrost
                 string serverPasswordSalt)
             {
                 if (!needPassword)
-                    return;
-
-                if (!Configuraton.Servers.TryGetValue(SelectedServerUniqueKey, out var item))
                 {
+                    Logger.LogDebug("Server does not need a password. Connecting..");
+                    return;
+                }
+
+                if (!Configuraton.Servers.TryGetValue(
+                    SelectedServerUniqueKey,
+                    out var savedPassword))
+                {
+                    Logger.LogDebug($"No saved password for server found (serverKey = {SelectedServerUniqueKey}).");
+
                     var inputField = __instance.m_passwordDialog.GetComponentInChildren<GuiInputField>();
 
                     if (inputField == null)
@@ -30,31 +37,31 @@ namespace Bifrost
                     {
                         if (!string.IsNullOrWhiteSpace(password))
                         {
-                            Configuraton.Servers.Add(SelectedServerUniqueKey, password);
-
-                            Logger.LogInfo($"Saved password for {SelectedServerUniqueKey}");
+                            Logger.LogDebug($"Set pending password for server (serverKey = {SelectedServerUniqueKey}).");
 
                             PendingPassword = password;
 
                             InvokeOnPasswordEntered(
                                 __instance,
-                                password);
+                                PendingPassword);
                         }
                     });
                 }
                 else
                 {
+                    Logger.LogError($"Found saved password for server (serverKey = {SelectedServerUniqueKey})");
+
                     __instance.m_passwordDialog.gameObject.SetActive(false);
 
                     InvokeOnPasswordEntered(
                         __instance,
-                        item);
+                        savedPassword);
                 }
             }
 
             private static void InvokeOnPasswordEntered(
                 ZNet instance,
-                string password)
+                string savedPassword)
             {
                 var method = AccessTools.Method(
                     typeof(ZNet),
@@ -62,7 +69,7 @@ namespace Bifrost
 
                 method?.Invoke(
                     instance,
-                    new object[] { password });
+                    new object[] { savedPassword });
             }
         }
     }

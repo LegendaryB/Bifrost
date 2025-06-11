@@ -40,13 +40,21 @@ namespace Bifrost
 
                 if (!File.Exists(configurationPath))
                 {
-                    Logger.LogInfo("Configuration file does not exist.");
+                    Logger.LogDebug("Configuration file does not exist.");
                     return null;
                 }
 
+                Logger.LogDebug("Configuration file found.");
+
                 var content = File.ReadAllText(configurationPath);
 
-                return JsonConvert.DeserializeObject<BifrostConfiguration>(content);
+                Logger.LogDebug("Configuration file read.");
+
+                var configuration = JsonConvert.DeserializeObject<BifrostConfiguration>(content);
+
+                Logger.LogDebug("Configuration file loaded.");
+
+                return configuration;
             }
             catch (Exception)
             {
@@ -65,6 +73,8 @@ namespace Bifrost
                 File.WriteAllText(
                     configurationPath,
                     content);
+
+                Logger.LogDebug("Saved configuration file.");
             }
             catch (Exception)
             {

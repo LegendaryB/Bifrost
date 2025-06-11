@@ -20,12 +20,14 @@ namespace Bifrost
                     return;
                 }
 
-                SelectedServerUniqueKey = GenerateServerUniqueKey(serverStatus.m_joinData);
+                Logger.LogDebug("Got server status object.");
 
-                Logger.LogError(SelectedServerUniqueKey);
+                SelectedServerUniqueKey = GenerateServerUniqueKey(serverStatus.m_joinData);
 
                 if (string.IsNullOrWhiteSpace(SelectedServerUniqueKey))
                     Logger.LogError("Failed to get server key.");
+
+                Logger.LogDebug("Got unique server key.");
             }
         }
 
